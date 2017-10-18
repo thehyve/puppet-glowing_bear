@@ -13,7 +13,7 @@ class glowing_bear::vhost inherits glowing_bear::params {
         docroot       => $app_root,
         docroot_owner => $user,
         docroot_group => $user,
-        require => Archive::Nexus[$::glowing_bear::params::app_archive],
+        require       => Archive::Nexus[$::glowing_bear::params::app_archive],
     }
 
 }
