@@ -19,7 +19,6 @@ class glowing_bear::assets inherits glowing_bear::params {
         packaging    => 'tar',
         extract      => true,
         extract_path => $home,
-        creates      => $app_root,
         require      => File[$home],
         notify       => [
             File[$::glowing_bear::params::env_location],
