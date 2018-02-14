@@ -1,9 +1,9 @@
 # Puppet module for Glowing Bear.
 
 This is the repository containing a puppet module for deploying the _Glowing Bear_ application,
-an [Angular](https://angular.io/) based front end for the _TranSMART_ application.
+an [Angular] based front end for the _TranSMART_ application.
 TranSMART is an open source data sharing and analytics platform for translational biomedical research, which
-is maintained by the [tranSMART Foundation](http://transmartfoundation.org).
+is maintained by the [tranSMART Foundation].
 
 The module creates the system user `glowingbear`, downloads and installs
 the Glowing Bear application, and configures Apache to serve the application
@@ -136,9 +136,9 @@ sudo puppet apply --modulepath=${HOME}/puppet/:/etc/puppetlabs/code/modules/ exa
 
 
 ## Test
-There are some automated tests, run using [rake](https://github.com/ruby/rake).
+There are some automated tests, run using [rake].
 
-A version of `ruby` before `2.3` is required. [rvm](https://rvm.io/) can be used to install a specific version of `ruby`.
+A version of `ruby` before `2.3` is required. [rvm] can be used to install a specific version of `ruby`.
 Use `rvm install 2.1` to use `ruby` version `2.1`.
 
 The tests are automatically run on our Bamboo server: [PUPPET-GB](https://ci.ctmmtrait.nl/browse/PUPPET-GB).
@@ -191,6 +191,9 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::hostname`      | | The hostname of the virtual host that hosts the application (e.g., the name of the virtual machine where it is deployed). |
 | `glowing_bear::app_url`       | | The address where the Glowing Bear application will be available. |
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
+| `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated.
+| `glowing_bear::autosave_subject_sets` | Glowing Bear default | Flag if subject selection should be automatically persisted.
+| `glowing_bear::export_data_view` | Glowing Bear default | Set data view for exports [`default`, `surveyTable`]
 
 Note that the modules only serves the application over plain HTTP, by configuring a simple Apache virtual host.
 For enabling HTTPS, a separate Apache instance needs to be setup as a proxy.
@@ -200,7 +203,7 @@ with an SSL proxy installed on the host machine.
 
 ## License
 
-Copyright &copy; 2017  The Hyve.
+Copyright &copy; 2017&ndash;2018 &nbsp; The Hyve.
 
 The puppet module for Glowing Bear is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -211,3 +214,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the [GNU General Public License](LICENSE) along with this program. If not, see https://www.gnu.org/licenses/.
 
+[tranSMART Foundation]: (http://transmartfoundation.org)
+[Angular]: (https://angular.io/)
+[rake]: (https://github.com/ruby/rake)
+[rvm]: (https://rvm.io/)
