@@ -1,6 +1,6 @@
 # Puppet module for Glowing Bear.
 
-This is the repository containing a puppet module for deploying the _Glowing Bear_ application,
+This is the repository containing a puppet module for deploying the _[Glowing Bear]_ application,
 an [Angular] based front end for the _TranSMART_ application.
 TranSMART is an open source data sharing and analytics platform for translational biomedical research, which
 is maintained by the [tranSMART Foundation].
@@ -214,7 +214,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the [GNU General Public License](LICENSE) along with this program. If not, see https://www.gnu.org/licenses/.
 
-[tranSMART Foundation]: (http://transmartfoundation.org)
-[Angular]: (https://angular.io/)
-[rake]: (https://github.com/ruby/rake)
-[rvm]: (https://rvm.io/)
+
+[Glowing Bear]: https://github.com/thehyve/glowing-bear
+[tranSMART Foundation]: http://transmartfoundation.org
+[Angular]: https://angular.io/
+[rake]: https://github.com/ruby/rake
+[rvm]: https://rvm.io/
