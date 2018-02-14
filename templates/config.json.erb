@@ -2,11 +2,11 @@
   "api-url": "<%= scope.lookupvar('::glowing_bear::params::transmart_url') %>",
   "api-version": "v2",
   "app-url": "<%= scope.lookupvar('::glowing_bear::params::application_url') %>"<%
-   if defined?(scope.lookupvar('::glowing_bear::params::tree_node_counts_update')) %>,
+   if scope.lookupvar('::glowing_bear::params::tree_node_counts_update') != nil %>,
   "tree-node-counts-update": <%= scope.lookupvar('::glowing_bear::params::tree_node_counts_update').to_s %><% end -%>
-<% if defined?(scope.lookupvar('::glowing_bear::params::autosave_subject_sets')) %>,
+  <% if scope.lookupvar('::glowing_bear::params::autosave_subject_sets') != nil %>,
   "autosave-subject-sets": <%= scope.lookupvar('::glowing_bear::params::autosave_subject_sets').to_s %><% end -%>
-<% if defined?(scope.lookupvar('::glowing_bear::params::export_data_view')) -%>,
-  "export-data-view": "<%= scope.lookupvar('::glowing_bear::params::export_data_view') %>"
-<% end -%>
+  <% if scope.lookupvar('::glowing_bear::params::export_data_view') != nil -%>,
+  "export-data-view": "<%= scope.lookupvar('::glowing_bear::params::export_data_view') %>"<% end -%>
+
 }
