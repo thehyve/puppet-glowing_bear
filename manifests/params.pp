@@ -10,7 +10,11 @@ class glowing_bear::params(
     Optional[String[1]] $app_url                = hiera('glowing_bear::app_url', undef),
     String[1] $transmart_url                    = hiera('glowing_bear::transmart_url', undef),
 
-    String[1] $env                              = hiera('glowing_bear::env', 'prod'),
+    Enum['dev', 'prod'] $env                    = hiera('glowing_bear::env', 'prod'),
+
+    Optional[Boolean] $tree_node_counts_update                  = hiera('glowing_bear::tree_node_counts_update', undef),
+    Optional[Boolean] $autosave_subject_sets                    = hiera('glowing_bear::autosave_subject_sets', undef),
+    Optional[Enum['default', 'surveyTable']] $export_data_view  = hiera('glowing_bear::export_data_view', undef),
 ) {
 
     if $app_url != undef {
