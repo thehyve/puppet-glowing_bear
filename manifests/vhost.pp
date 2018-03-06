@@ -4,12 +4,13 @@ class glowing_bear::vhost inherits glowing_bear::params {
 
     $user = $::glowing_bear::params::user
     $hostname = $::glowing_bear::params::hostname
+    $port = $::glowing_bear::vhost::port
     $app_root = $::glowing_bear::params::app_root
 
     class { 'apache': }
 
     apache::vhost { $hostname:
-        port          => '80',
+        port          => $port,
         docroot       => $app_root,
         docroot_owner => $user,
         docroot_group => $user,

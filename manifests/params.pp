@@ -7,6 +7,7 @@ class glowing_bear::params(
     Enum['snapshots', 'releases'] $repository   = hiera('glowing_bear::repository', 'snapshots'),
 
     String[1] $hostname                         = hiera('glowing_bear::hostname', undef),
+    Numeric $port                               = hiera('glowing_bear::port', 80),
     Optional[String[1]] $app_url                = hiera('glowing_bear::app_url', undef),
     String[1] $transmart_url                    = hiera('glowing_bear::transmart_url', undef),
 

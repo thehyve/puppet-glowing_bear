@@ -189,6 +189,7 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::user`          | `glowingbear` | System user that owns the application assets. |
 | `glowing_bear::user_home`     | `/home/${user}` | The user home directory |
 | `glowing_bear::hostname`      | | The hostname of the virtual host that hosts the application (e.g., the name of the virtual machine where it is deployed). |
+| `glowing_bear::port`          | 80 | The port Apache should listen to. |
 | `glowing_bear::app_url`       | | The address where the Glowing Bear application will be available. |
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated.
