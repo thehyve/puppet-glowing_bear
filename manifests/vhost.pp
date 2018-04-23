@@ -2,11 +2,6 @@
 class glowing_bear::vhost inherits glowing_bear::params {
     include ::glowing_bear
 
-    $user = $::glowing_bear::params::user
-    $hostname = $::glowing_bear::params::hostname
-    $port = $::glowing_bear::vhost::port
-    $app_root = $::glowing_bear::params::app_root
-
     class { 'apache': }
 
     apache::vhost { $hostname:
