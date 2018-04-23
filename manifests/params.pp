@@ -1,15 +1,16 @@
 # Copyright 2017 The Hyve.
 class glowing_bear::params(
+    String[1] $hostname                         = lookup('glowing_bear::hostname', String),
+    String[1] $transmart_url                    = lookup('glowing_bear::transmart_url', String),
+
     String[1] $user                             = lookup('glowing_bear::user', String, first, 'glowingbear'),
     Optional[String[2]] $user_home              = lookup('glowing_bear::user_home', Optional[String[2]], first, undef),
     String[1] $version                          = lookup('glowing_bear::version', String, first, '0.0.1-SNAPSHOT'),
     String[1] $nexus_url                        = lookup('glowing_bear::nexus_url', String, first, 'https://repo.thehyve.nl'),
     Enum['snapshots', 'releases'] $repository   = lookup('glowing_bear::repository', Enum['snapshots','releases'], first, 'snapshots'),
 
-    String[1] $hostname                         = lookup('glowing_bear::hostname', String),
     Integer[1,65535] $port                      = lookup('glowing_bear::port', Integer[1,65535], first, 80),
     Optional[String[1]] $app_url                = lookup('glowing_bear::app_url', Optional[String], first, undef),
-    String[1] $transmart_url                    = lookup('glowing_bear::transmart_url', String),
 
     Enum['dev', 'prod'] $env                    = lookup('glowing_bear::env', Enum['dev','prod'], first, 'prod'),
 
