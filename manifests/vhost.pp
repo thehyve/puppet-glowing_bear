@@ -4,11 +4,11 @@ class glowing_bear::vhost inherits glowing_bear::params {
 
     class { 'apache': }
 
-    apache::vhost { $hostname:
-        port          => $port,
-        docroot       => $app_root,
-        docroot_owner => $user,
-        docroot_group => $user,
+    apache::vhost { $::glowing_bear::params::hostname:
+        port          => $::glowing_bear::params::port,
+        docroot       => $::glowing_bear::params::app_root,
+        docroot_owner => $::glowing_bear::params::user,
+        docroot_group => $::glowing_bear::params::user,
         rewrites      =>  [
           {
             comment      =>  'If an existing asset or directory is requested go to it as it is',
