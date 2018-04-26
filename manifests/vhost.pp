@@ -2,7 +2,7 @@
 class glowing_bear::vhost inherits glowing_bear::params {
     include ::glowing_bear
 
-    class { 'apache': }
+    class { '::apache': }
 
     apache::vhost { $::glowing_bear::params::hostname:
         port          => $::glowing_bear::params::port,
