@@ -192,7 +192,7 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::port`          | 80 | The port Apache should listen to. |
 | `glowing_bear::app_url`       | | The address where the Glowing Bear application will be available. |
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
-| `glowing_bear::env`           | `transmart` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |
+| `glowing_bear::env`           | `dev` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated.
 | `glowing_bear::autosave_subject_sets` | Glowing Bear default | Flag if subject selection should be automatically persisted.
 | `glowing_bear::export_data_view` | Glowing Bear default | Set data view for exports [`default`, `surveyTable`]
