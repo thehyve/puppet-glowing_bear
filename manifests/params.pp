@@ -12,7 +12,7 @@ class glowing_bear::params(
     Integer[1,65535] $port                      = lookup('glowing_bear::port', Integer[1,65535], first, 80),
     Optional[String[1]] $app_url                = lookup('glowing_bear::app_url', Optional[String], first, undef),
 
-    Enum['dev', 'prod'] $env                    = lookup('glowing_bear::env', Enum['dev','prod'], first, 'prod'),
+    Enum['default', 'dev', 'transmart'] $env    = lookup('glowing_bear::env', Enum['default', 'dev', 'transmart'], first, 'transmart'),
 
     Optional[Boolean] $tree_node_counts_update                  = lookup('glowing_bear::tree_node_counts_update', Optional[Boolean], first, undef),
     Optional[Boolean] $autosave_subject_sets                    = lookup('glowing_bear::autosave_subject_sets', Optional[Boolean], first, undef),
