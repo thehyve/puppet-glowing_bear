@@ -2,7 +2,7 @@
   "api-url": "<%= scope.lookupvar('::glowing_bear::params::transmart_url') %>",
   "api-version": "v2",
   "app-url": "<%= scope.lookupvar('::glowing_bear::params::application_url') %>",
-  "authentication-method": "oauth2",<%
+  "authentication-method": "oauth2"<%
    if scope.lookupvar('::glowing_bear::params::tree_node_counts_update') != nil %>,
   "tree-node-counts-update": <%= scope.lookupvar('::glowing_bear::params::tree_node_counts_update').to_s %><% end -%>
   <% if scope.lookupvar('::glowing_bear::params::autosave_subject_sets') != nil %>,
