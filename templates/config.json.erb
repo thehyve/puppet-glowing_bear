@@ -2,8 +2,11 @@
   "api-url": "<%= scope.lookupvar('::glowing_bear::params::transmart_url') %>",
   "api-version": "v2",
   "app-url": "<%= scope.lookupvar('::glowing_bear::params::application_url') %>",
-  "authentication-method": "oauth2"<%
-   if scope.lookupvar('::glowing_bear::params::tree_node_counts_update') != nil %>,
+  "authentication-method": "<%= scope.lookupvar('::glowing_bear::params::authentication_method') %>"<%
+   if scope.lookupvar('::glowing_bear::params::authentication_method') == 'oidc' %>,
+  "oidc-server-url": "<%= scope.lookupvar('::glowing_bear::params::oidc_server_url') %>",
+  "oidc-client-id": "glowingbear-js"<% end -%>
+  <% if scope.lookupvar('::glowing_bear::params::tree_node_counts_update') != nil %>,
   "tree-node-counts-update": <%= scope.lookupvar('::glowing_bear::params::tree_node_counts_update').to_s %><% end -%>
   <% if scope.lookupvar('::glowing_bear::params::autosave_subject_sets') != nil %>,
   "autosave-subject-sets": <%= scope.lookupvar('::glowing_bear::params::autosave_subject_sets').to_s %><% end -%>

@@ -1,0 +1,4 @@
+---
+glowing_bear::hostname: test3.example.com
+glowing_bear::transmart_url: https://transmart.example.com
+glowing_bear::authentication_method: oidc

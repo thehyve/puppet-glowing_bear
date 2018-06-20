@@ -17,6 +17,9 @@ class glowing_bear::params(
     Optional[Boolean] $tree_node_counts_update                  = lookup('glowing_bear::tree_node_counts_update', Optional[Boolean], first, undef),
     Optional[Boolean] $autosave_subject_sets                    = lookup('glowing_bear::autosave_subject_sets', Optional[Boolean], first, undef),
     Optional[Enum['default', 'surveyTable']] $export_data_view  = lookup('glowing_bear::export_data_view', Optional[Enum['default','surveyTable']], first, undef),
+
+    Enum['oauth2', 'oidc'] $authentication_method = lookup('glowing_bear::authentication_method', Enum['oauth2', 'oidc'], first, 'oauth2'),
+    Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
 ) {
 
     if $app_url != undef {
@@ -24,6 +27,13 @@ class glowing_bear::params(
     } else {
         notify { "Warning: Glowing Bear on ${hostname} is configured without SSL!": }
         $application_url = "http://${hostname}"
+    }
+
+    if $authentication_method == 'oidc' {
+        # Check authentication settings
+        if $oidc_server_url == undef {
+            fail('No OpenID Connect server configured. Please configure glowing_bear::oidc_server_url')
+        }
     }
 
     # Set glowingbear user home directory
