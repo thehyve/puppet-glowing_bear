@@ -196,7 +196,7 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated. |
 | `glowing_bear::autosave_subject_sets` | Glowing Bear default | Flag if subject selection should be automatically persisted. |
 | `glowing_bear::export_data_view` | Glowing Bear default | Set data view for exports [`default`, `surveyTable`] |
-| `glowing_bear::authentication_method` | `oauth2` | Authentication method [`oauth2`, `oidc`] |
+| `glowing_bear::authentication_service_type` | `transmart` | Authentication service type [`transmart`, `oidc`] |
 | `glowing_bear::oidc_server_url` | | Identity provider URL for when OpenID Connect is used for authentication. |
 
 Note that the modules only serves the application over plain HTTP, by configuring a simple Apache virtual host.
