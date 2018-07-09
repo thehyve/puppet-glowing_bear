@@ -18,7 +18,7 @@ class glowing_bear::params(
     Optional[Boolean] $autosave_subject_sets                    = lookup('glowing_bear::autosave_subject_sets', Optional[Boolean], first, undef),
     Optional[Enum['default', 'surveyTable']] $export_data_view  = lookup('glowing_bear::export_data_view', Optional[Enum['default','surveyTable']], first, undef),
 
-    Enum['oauth2', 'oidc'] $authentication_method = lookup('glowing_bear::authentication_method', Enum['oauth2', 'oidc'], first, 'oauth2'),
+    Enum['transmart', 'oidc'] $authentication_service_type = lookup('glowing_bear::authentication_service_type', Enum['transmart', 'oidc'], first, 'transmart'),
     Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
 ) {
 
