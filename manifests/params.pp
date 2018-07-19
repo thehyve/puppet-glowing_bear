@@ -20,6 +20,7 @@ class glowing_bear::params(
 
     Enum['transmart', 'oidc'] $authentication_service_type = lookup('glowing_bear::authentication_service_type', Enum['transmart', 'oidc'], first, 'transmart'),
     Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
+    String[1] $oidc_client_id                   = lookup('glowing_bear::oidc_client_id', String, first, 'glowingbear-js'),
 ) {
 
     if $app_url != undef {
@@ -29,7 +30,7 @@ class glowing_bear::params(
         $application_url = "http://${hostname}"
     }
 
-    if $authentication_method == 'oidc' {
+    if $authentication_service_type == 'oidc' {
         # Check authentication settings
         if $oidc_server_url == undef {
             fail('No OpenID Connect server configured. Please configure glowing_bear::oidc_server_url')
@@ -47,6 +48,4 @@ class glowing_bear::params(
     $app_root = "${gbuser_home}/glowing-bear-${version}"
     $env_location = "${app_root}/app/config/env.json"
     $config_location = "${app_root}/app/config/config.${env}.json"
-
 }
-
