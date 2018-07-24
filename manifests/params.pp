@@ -18,6 +18,10 @@ class glowing_bear::params(
     Optional[Boolean] $autosave_subject_sets                    = lookup('glowing_bear::autosave_subject_sets', Optional[Boolean], first, undef),
     Optional[Enum['default', 'surveyTable']] $export_data_view  = lookup('glowing_bear::export_data_view', Optional[Enum['default','surveyTable']], first, undef),
 
+    Boolean $show_observation_counts            = lookup('glowing_bear::show_observation_counts', Boolean, first, true),
+    Boolean $include_data_table                 = lookup('glowing_bear::include_data_table', Boolean, first, true),
+    Boolean $include_query_subscription         = lookup('glowing_bear::include_query_subscription', Boolean, first, false),
+
     Enum['transmart', 'oidc'] $authentication_service_type = lookup('glowing_bear::authentication_service_type', Enum['transmart', 'oidc'], first, 'transmart'),
     Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
     String[1] $oidc_client_id                   = lookup('glowing_bear::oidc_client_id', String, first, 'glowingbear-js'),
