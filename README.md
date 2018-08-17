@@ -13,6 +13,15 @@ The repository used to fetch the required Glowing Bear packages from is configur
 
 ## Dependencies and installation
 
+### Install Puppet
+```bash
+# Install Puppet
+apt install puppet
+
+# Check Puppet version, Puppet 4.8 and Puppet 5 should be fine.
+puppet --version
+```
+
 ### Puppet modules
 The module depends on the `stdlib`, `archive` and `apache` modules.
 
@@ -22,16 +31,10 @@ sudo puppet module install puppetlabs-stdlib
 sudo puppet module install puppet-archive
 sudo puppet module install puppetlabs-apache
 ```
-Alternatively, the modules and their dependencies can be cloned from `github.com`
-and copied into `/etc/puppetlabs/code/modules`:
+
+Check the installed modules:
 ```bash
-git clone https://github.com/puppetlabs/puppetlabs-stdlib stdlib
-pushd stdlib; git checkout 4.17.0; popd
-git clone https://github.com/voxpupuli/puppet-archive.git archive
-pushd archive; git checkout v1.3.0; popd
-git clone https://github.com/puppetlabs/puppetlabs-apache apache
-pushd apache; git checkout 1.10.0; popd
-cp -r stdlib archive apache /etc/puppetlabs/code/modules/
+sudo puppet module list --tree
 ```
 
 ### Install the `glowing_bear` module
@@ -126,36 +129,34 @@ It is also possible to use the module without a Puppet master by applying a mani
 There is an example manifest in `examples/complete.pp`.
 
 ```bash
-sudo puppet apply --modulepath=${modulepath} examples/complete.pp
-```
-where `modulepath` is a list of directories where Puppet can find modules in, separated by the system path-separator character (on Ubuntu/CentOS it is `:`).
-Example:
-```bash
-sudo puppet apply --modulepath=${HOME}/puppet/:/etc/puppetlabs/code/modules/ examples/complete.pp
+cd /etc/puppetlabes/code/modules/glowing_bear
+sudo puppet apply examples/complete.pp
 ```
 
 
-## Test
+## Development
+
+### Test
 There are some automated tests, run using [rake].
 
-A version of `ruby` before `2.3` is required. [rvm] can be used to install a specific version of `ruby`.
-Use `rvm install 2.1` to use `ruby` version `2.1`.
+`ruby >= 2.3` is required. [rvm] can be used to install a specific version of `ruby`.
+Use `rvm install 2.4` to use `ruby` version `2.4`.
 
 The tests are automatically run on our Bamboo server: [PUPPET-GB](https://ci.ctmmtrait.nl/browse/PUPPET-GB).
 
-### Rake tests
+#### Rake tests
 Install rake using the system-wide `ruby`:
 ```bash
 yum install ruby-devel
 gem install bundler
-export PUPPET_VERSION=4.4.2
+export PUPPET_VERSION=4.8.2
 bundle
 ```
 or using `rvm`:
 ```bash
-rvm install 2.1
+rvm install 2.4
 gem install bundler
-export PUPPET_VERSION=4.4.2
+export PUPPET_VERSION=4.8.2
 bundle
 ```
 Run the test suite:
@@ -163,7 +164,7 @@ Run the test suite:
 rake test
 ```
 
-## Classes
+### Classes
 
 Overview of the classes defined in this module.
 
@@ -176,7 +177,7 @@ Overview of the classes defined in this module.
 | `::glowing_bear::complete` | Installs all of the above. |
 
 
-## Module parameters
+### Module parameters
 
 Overview of the parameters that can be used in Hiera to configure the module.
 Alternatively, the parameters of the `::glowing_bear::params` class can be used to configure these settings.
@@ -193,11 +194,15 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::app_url`       | | The address where the Glowing Bear application will be available. |
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
 | `glowing_bear::env`           | `dev` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |
+| `glowing_bear::show_observation_counts` | `true` | Show both subject counts and observation counts. |
+| `glowing_bear::include_data_table` | `true` | Show a data table below data selection. |
+| `glowing_bear::include_query_subscription` | `false` | Enable query subscription. |
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated. |
 | `glowing_bear::autosave_subject_sets` | Glowing Bear default | Flag if subject selection should be automatically persisted. |
 | `glowing_bear::export_data_view` | Glowing Bear default | Set data view for exports [`default`, `surveyTable`] |
 | `glowing_bear::authentication_service_type` | `transmart` | Authentication service type [`transmart`, `oidc`] |
 | `glowing_bear::oidc_server_url` | | Identity provider URL for when OpenID Connect is used for authentication. |
+| `glowing_bear::oidc_client_id` | `glowingbear-js` | Client ID for OpenID Connect. |
 
 Note that the modules only serves the application over plain HTTP, by configuring a simple Apache virtual host.
 For enabling HTTPS, a separate Apache instance needs to be setup as a proxy.

@@ -2,10 +2,13 @@
   "api-url": "<%= scope.lookupvar('::glowing_bear::params::transmart_url') %>",
   "api-version": "v2",
   "app-url": "<%= scope.lookupvar('::glowing_bear::params::application_url') %>",
+  "show-observation-counts": "<%= scope.lookupvar('::glowing_bear::params::show_observation_counts').to_s %>",
+  "include-data-table": "<%= scope.lookupvar('::glowing_bear::params::include_data_table').to_s %>",
+  "include-query-subscription": "<%= scope.lookupvar('::glowing_bear::params::include_query_subscription').to_s %>",
   "authentication-service-type": "<%= scope.lookupvar('::glowing_bear::params::authentication_service_type') %>"<%
    if scope.lookupvar('::glowing_bear::params::authentication_service_type') == 'oidc' %>,
   "oidc-server-url": "<%= scope.lookupvar('::glowing_bear::params::oidc_server_url') %>",
-  "oidc-client-id": "glowingbear-js"<% end -%>
+  "oidc-client-id": "<%= scope.lookupvar('::glowing_bear::params::oidc_client_id') %>"<% end -%>
   <% if scope.lookupvar('::glowing_bear::params::tree_node_counts_update') != nil %>,
   "tree-node-counts-update": <%= scope.lookupvar('::glowing_bear::params::tree_node_counts_update').to_s %><% end -%>
   <% if scope.lookupvar('::glowing_bear::params::autosave_subject_sets') != nil %>,
