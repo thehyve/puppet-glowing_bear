@@ -1,5 +1,7 @@
 # Puppet module for Glowing Bear.
 
+[![Build Status](https://travis-ci.org/thehyve/puppet-glowing_bear.svg?branch=master)](https://travis-ci.org/thehyve/puppet-glowing_bear/branches)
+
 This is the repository containing a puppet module for deploying the _[Glowing Bear]_ application,
 an [Angular] based front end for the _TranSMART_ application.
 TranSMART is an open source data sharing and analytics platform for translational biomedical research, which
