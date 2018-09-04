@@ -51,5 +51,6 @@ class glowing_bear::params(
     $app_archive = "${gbuser_home}/glowing-bear-${version}.tar"
     $app_root = "${gbuser_home}/glowing-bear-${version}"
     $env_location = "${app_root}/app/config/env.json"
+    $default_config_location = "${app_root}/app/config/config.default.json"
     $config_location = "${app_root}/app/config/config.${env}.json"
 }

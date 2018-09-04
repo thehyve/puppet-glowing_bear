@@ -1,9 +1,11 @@
 # Copyright 2017 The Hyve.
 class glowing_bear::config inherits glowing_bear::params {
     include ::glowing_bear
+    include stdlib
 
     $app_root = $::glowing_bear::params::app_root
     $env_location = $::glowing_bear::params::env_location
+    $default_config_location = $::glowing_bear::params::default_config_location
     $config_location = $::glowing_bear::params::config_location
 
     File {
@@ -17,6 +19,43 @@ class glowing_bear::config inherits glowing_bear::params {
         content => template('glowing_bear/env.json.erb'),
         mode    => '0444',
     }
+
+    # Read default configuration
+    $default_properties = loadjson($default_config_location, {})
+
+    # Set properties to be overridden
+    $custom_properties = {
+        'api-url'                     => $::glowing_bear::params::transmart_url,
+        'app-url'                     => $::glowing_bear::params::application_url,
+        'show-observation-counts'     => $::glowing_bear::params::show_observation_counts,
+        'include-data-table'          => $::glowing_bear::params::include_data_table,
+        'include-query-subscription'  => $::glowing_bear::params::include_query_subscription,
+        'authentication-service-type' => $::glowing_bear::params::authentication_service_type,
+    } + ($::glowing_bear::params::authentication_service_type ? {
+        'oidc' => {
+            'oidc-server-url' => $::glowing_bear::params::oidc_server_url,
+            'oidc-client-id'  => $::glowing_bear::params::oidc_client_id,
+        },
+        default => {}
+    }) + ($::glowing_bear::params::tree_node_counts_update ? {
+        nil     => {},
+        default => {
+            'tree-node-counts-update' => $::glowing_bear::params::tree_node_counts_update,
+        }
+    }) + ($::glowing_bear::params::autosave_subject_sets ? {
+        nil     => {},
+        default => {
+            'autosave-subject-sets' => $::glowing_bear::params::autosave_subject_sets,
+        }
+    }) + ($::glowing_bear::params::export_data_view ? {
+        nil     => {},
+        default => {
+            'export-data-view' => $::glowing_bear::params::export_data_view,
+        }
+    })
+
+    # Merge default configuration with custom properties
+    $properties = $default_properties + $custom_properties
 
     file { $config_location:
         ensure  => file,
