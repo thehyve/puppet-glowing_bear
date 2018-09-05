@@ -38,17 +38,17 @@ class glowing_bear::config inherits glowing_bear::params {
         },
         default => {}
     }) + ($::glowing_bear::params::tree_node_counts_update ? {
-        nil     => {},
+        undef     => {},
         default => {
             'tree-node-counts-update' => $::glowing_bear::params::tree_node_counts_update,
         }
     }) + ($::glowing_bear::params::autosave_subject_sets ? {
-        nil     => {},
+        undef     => {},
         default => {
             'autosave-subject-sets' => $::glowing_bear::params::autosave_subject_sets,
         }
     }) + ($::glowing_bear::params::export_data_view ? {
-        nil     => {},
+        undef     => {},
         default => {
             'export-data-view' => $::glowing_bear::params::export_data_view,
         }

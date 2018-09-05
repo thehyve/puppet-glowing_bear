@@ -1,6 +1,7 @@
 {
 <% @properties.each_with_index do |(property, value), index| -%>
-<% if value.is_a?(String) -%>
+<% if value == nil -%>
+  "<%= property %>": null<% elsif value.is_a?(String) -%>
   "<%= property %>": "<%= value %>"<% else -%>
   "<%= property %>": <%= value %><% end -%><% if index != @properties.size - 1 -%>
 ,
