@@ -22,7 +22,7 @@ class glowing_bear::assets inherits glowing_bear::params {
         require      => File[$home],
         notify       => [
             File[$::glowing_bear::params::env_location],
-            File[$::glowing_bear::params::config_location],
+            Glowing_Bear_Config[$::glowing_bear::params::config_location],
         ],
     }
 

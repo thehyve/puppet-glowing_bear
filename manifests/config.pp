@@ -1,7 +1,6 @@
 # Copyright 2017 The Hyve.
 class glowing_bear::config inherits glowing_bear::params {
     include ::glowing_bear
-    include stdlib
 
     $app_root = $::glowing_bear::params::app_root
     $env_location = $::glowing_bear::params::env_location
@@ -19,9 +18,6 @@ class glowing_bear::config inherits glowing_bear::params {
         content => template('glowing_bear/env.json.erb'),
         mode    => '0444',
     }
-
-    # Read default configuration
-    $default_properties = loadjson($default_config_location, {})
 
     # Set properties to be overridden
     $custom_properties = {
@@ -55,12 +51,9 @@ class glowing_bear::config inherits glowing_bear::params {
     })
 
     # Merge default configuration with custom properties
-    $properties = $default_properties + $custom_properties
-
-    file { $config_location:
-        ensure  => file,
-        content => template('glowing_bear/config.json.erb'),
-        mode    => '0444',
+    glowing_bear_config { $config_location:
+        default_path      => $default_config_location,
+        custom_properties => $custom_properties,
     }
 
 }
