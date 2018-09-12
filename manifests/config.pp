@@ -54,6 +54,7 @@ class glowing_bear::config inherits glowing_bear::params {
     glowing_bear_config { $config_location:
         default_path      => $default_config_location,
         custom_properties => $custom_properties,
+        require => Archive::Nexus[$::glowing_bear::params::app_archive],
     }
 
 }
