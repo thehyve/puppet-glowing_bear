@@ -16,7 +16,6 @@ class glowing_bear::params(
 
     Optional[Boolean] $tree_node_counts_update                  = lookup('glowing_bear::tree_node_counts_update', Optional[Boolean], first, undef),
     Optional[Boolean] $autosave_subject_sets                    = lookup('glowing_bear::autosave_subject_sets', Optional[Boolean], first, undef),
-    Optional[Enum['dataTable', 'surveyTable']] $export_data_view  = lookup('glowing_bear::export_data_view', Optional[Enum['dataTable','surveyTable']], first, undef),
 
     Boolean $show_observation_counts            = lookup('glowing_bear::show_observation_counts', Boolean, first, true),
     Boolean $include_data_table                 = lookup('glowing_bear::include_data_table', Boolean, first, true),
@@ -25,6 +24,9 @@ class glowing_bear::params(
     Enum['transmart', 'oidc'] $authentication_service_type = lookup('glowing_bear::authentication_service_type', Enum['transmart', 'oidc'], first, 'transmart'),
     Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
     String[1] $oidc_client_id                   = lookup('glowing_bear::oidc_client_id', String, first, 'glowingbear-js'),
+    String[1] $export_name                      = lookup('glowing_bear::export_name', String, first, 'transmart'),
+    String[1] $export_data_view                 = lookup('glowing_bear::export_data_view', String, first, 'dataTable'),
+    Optional[String[1]] $export_url             = lookup('glowing_bear::export_url', Optional[String], first, undef),
 ) {
 
     if $app_url != undef {
@@ -53,4 +55,10 @@ class glowing_bear::params(
     $env_location = "${app_root}/app/config/env.json"
     $default_config_location = "${app_root}/app/config/config.default.json"
     $config_location = "${app_root}/app/config/config.${env}.json"
+
+    if $export_name == 'packer' {
+        if $export_url == undef {
+            fail('export_name set to packer, but no url specified. Please configure glowing_bear::export_url')
+        }
+    }
 }

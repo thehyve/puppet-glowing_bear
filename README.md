@@ -201,10 +201,12 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::include_query_subscription` | `false` | Enable query subscription. |
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated. |
 | `glowing_bear::autosave_subject_sets` | Glowing Bear default | Flag if subject selection should be automatically persisted. |
-| `glowing_bear::export_data_view` | Glowing Bear default | Set data view for exports [`dataTable`, `surveyTable`] |
 | `glowing_bear::authentication_service_type` | `transmart` | Authentication service type [`transmart`, `oidc`] |
 | `glowing_bear::oidc_server_url` | | Identity provider URL for when OpenID Connect is used for authentication. |
 | `glowing_bear::oidc_client_id` | `glowingbear-js` | Client ID for OpenID Connect. |
+| `glowing_bear::export_name` | `transmart` | Exporter job name. `transmart` for using built in exporter. `packer` for external one. |
+| `glowing_bear::export_data_view` | `dataTable` | Name to specify a data view. It has to be known to the exporter. |
+| `glowing_bear::export_url` |  | URL of external exporter. Required only when external export activated (`glowing_bear::export_name` set to `packer`) |
 
 Note that the modules only serves the application over plain HTTP, by configuring a simple Apache virtual host.
 For enabling HTTPS, a separate Apache instance needs to be setup as a proxy.

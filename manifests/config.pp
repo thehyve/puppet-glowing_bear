@@ -27,6 +27,15 @@ class glowing_bear::config inherits glowing_bear::params {
         'include-data-table'          => $::glowing_bear::params::include_data_table,
         'include-query-subscription'  => $::glowing_bear::params::include_query_subscription,
         'authentication-service-type' => $::glowing_bear::params::authentication_service_type,
+        'export-mode'                 => {
+            'name'                    => $::glowing_bear::params::export_name,
+            'data-view'               => $::glowing_bear::params::export_data_view,
+        } + ($::glowing_bear::params::export_url ? {
+            undef => {},
+            default => {
+                'export-url' => $::glowing_bear::params::export_url
+            }
+        })
     } + ($::glowing_bear::params::authentication_service_type ? {
         'oidc' => {
             'oidc-server-url' => $::glowing_bear::params::oidc_server_url,
@@ -42,11 +51,6 @@ class glowing_bear::config inherits glowing_bear::params {
         undef     => {},
         default => {
             'autosave-subject-sets' => $::glowing_bear::params::autosave_subject_sets,
-        }
-    }) + ($::glowing_bear::params::export_data_view ? {
-        undef     => {},
-        default => {
-            'export-data-view' => $::glowing_bear::params::export_data_view,
         }
     })
 

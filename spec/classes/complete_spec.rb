@@ -25,5 +25,16 @@ describe 'glowing_bear::complete' do
       it { is_expected.to create_class('glowing_bear::config') }
       it { is_expected.to create_class('glowing_bear::vhost') }
     end
+    context "with external export configurations on #{os}" do
+      let(:facts) { facts }
+      let(:node) { 'ext.exp.example.com' }
+      it { is_expected.to create_class('glowing_bear::config') }
+      it { is_expected.to create_class('glowing_bear::params') }
+    end
+    context "with not complete external export configurations on #{os}" do
+      let(:facts) { facts }
+      let(:node) { 'ext.exp.nourl.example.com' }
+      it { should compile.and_raise_error(/configure glowing_bear::export_url/) }
+    end
   end
 end
