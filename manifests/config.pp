@@ -1,7 +1,6 @@
 # Copyright 2017 The Hyve.
 class glowing_bear::config inherits glowing_bear::params {
     include ::glowing_bear
-    include stdlib
 
     $app_root = $::glowing_bear::params::app_root
     $env_location = $::glowing_bear::params::env_location
@@ -20,9 +19,6 @@ class glowing_bear::config inherits glowing_bear::params {
         mode    => '0444',
     }
 
-    # Read default configuration
-    $default_properties = loadjson($default_config_location, {})
-
     # Set properties to be overridden
     $custom_properties = {
         'api-url'                     => $::glowing_bear::params::transmart_url,
@@ -38,29 +34,27 @@ class glowing_bear::config inherits glowing_bear::params {
         },
         default => {}
     }) + ($::glowing_bear::params::tree_node_counts_update ? {
-        nil     => {},
+        undef     => {},
         default => {
             'tree-node-counts-update' => $::glowing_bear::params::tree_node_counts_update,
         }
     }) + ($::glowing_bear::params::autosave_subject_sets ? {
-        nil     => {},
+        undef     => {},
         default => {
             'autosave-subject-sets' => $::glowing_bear::params::autosave_subject_sets,
         }
     }) + ($::glowing_bear::params::export_data_view ? {
-        nil     => {},
+        undef     => {},
         default => {
             'export-data-view' => $::glowing_bear::params::export_data_view,
         }
     })
 
     # Merge default configuration with custom properties
-    $properties = $default_properties + $custom_properties
-
-    file { $config_location:
-        ensure  => file,
-        content => template('glowing_bear/config.json.erb'),
-        mode    => '0444',
+    glowing_bear_config { $config_location:
+        default_path      => $default_config_location,
+        custom_properties => $custom_properties,
+        require           => Archive::Nexus[$::glowing_bear::params::app_archive],
     }
 
 }
