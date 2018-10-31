@@ -1,0 +1,6 @@
+---
+glowing_bear::hostname: test.example.com
+glowing_bear::transmart_url: https://transmart.example.com
+glowing_bear::export_name: packer
+glowing_bear::export_data_view: patient-dignosis
+glowing_bear::export_url: https://export.example.com
