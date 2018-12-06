@@ -27,6 +27,7 @@ class glowing_bear::params(
     String[1] $export_name                      = lookup('glowing_bear::export_name', String, first, 'transmart'),
     String[1] $export_data_view                 = lookup('glowing_bear::export_data_view', String, first, 'dataTable'),
     Optional[String[1]] $export_url             = lookup('glowing_bear::export_url', Optional[String], first, undef),
+    Boolean $run_cypress_tests                  = lookup('glowing_bear::run_cypress_tests', Boolean, first, false),
 ) {
 
     if $app_url != undef {
@@ -51,6 +52,7 @@ class glowing_bear::params(
     }
 
     $app_archive = "${gbuser_home}/glowing-bear-${version}.tar"
+    $cypress_tests_archive = "${gbuser_home}/glowing-bear-cypress-tests-${version}.zip"
     $app_root = "${gbuser_home}/glowing-bear-${version}"
     $env_location = "${app_root}/app/config/env.json"
     $default_config_location = "${app_root}/app/config/config.default.json"

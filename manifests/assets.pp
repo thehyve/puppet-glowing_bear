@@ -26,5 +26,26 @@ class glowing_bear::assets inherits glowing_bear::params {
         ],
     }
 
+    if $::glowing_bear::params::run_cypress_tests {
+	    archive::nexus { $cypress_tests_archive:
+		user         => $user,
+		group        => $user,
+		url          => $::glowing_bear::params::nexus_url,
+		gav          => "nl.thehyve:glowing-bear-cypress-tests:${::glowing_bear::params::version}",
+		repository   => $::glowing_bear::params::repository,
+		packaging    => 'zip',
+		extract      => true,
+		extract_path => $home,
+		require      => File[$home],
+		subscribe    => archive::nexus[$app_archive],
+		#notify       => [
+		#	1. generate cypress file
+		#	2. run cypress tests
+		#	3. in case of failure notify developers
+		#],
+	    }
+    }
+
+
 }
 
