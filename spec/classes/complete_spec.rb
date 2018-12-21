@@ -35,6 +35,12 @@ describe 'glowing_bear::complete' do
       let(:facts) { facts }
       let(:node) { 'ext.exp.nourl.example.com' }
       it { should compile.and_raise_error(/configure glowing_bear::export_url/) }
+      end
+    context "with complete fractalis configurations on #{os}" do
+      let(:facts) { facts }
+      let(:node) { 'fractalis.example.com.yaml' }
+      it { is_expected.to create_class('glowing_bear::config') }
+      it { is_expected.to create_class('glowing_bear::params') }
     end
   end
 end

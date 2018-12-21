@@ -27,6 +27,9 @@ class glowing_bear::params(
     String[1] $export_name                      = lookup('glowing_bear::export_name', String, first, 'transmart'),
     String[1] $export_data_view                 = lookup('glowing_bear::export_data_view', String, first, 'dataTable'),
     Optional[String[1]] $export_url             = lookup('glowing_bear::export_url', Optional[String], first, undef),
+    Boolean $enable_fractalis_analysis          = lookup('glowing_bear::enable_fractalis_analysis', Boolean, first, false),
+    Optional[String[1]] $fractalis_url          = lookup('glowing_bear::fractalis_url', Optional[String], first, undef),
+    Optional[String[1]] $fractalis_datasource_url               = lookup('glowing_bear::fractalis_datasource_url', Optional[String], first, $transmart_url),
 ) {
 
     if $app_url != undef {
@@ -59,6 +62,12 @@ class glowing_bear::params(
     if $export_name == 'packer' {
         if $export_url == undef {
             fail('export_name set to packer, but no url specified. Please configure glowing_bear::export_url')
+        }
+    }
+
+    if $enable_fractalis_analysis {
+        if $fractalis_url  == undef {
+            fail('fractalis analysis is enabled, but no url specified. Please configure glowing_bear::fractalis_url')
         }
     }
 }
