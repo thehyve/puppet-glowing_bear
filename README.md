@@ -207,6 +207,9 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::export_name` | `transmart` | Exporter job name. `transmart` for using built in exporter. `packer` for external one. |
 | `glowing_bear::export_data_view` | `dataTable` | Name to specify a data view. It has to be known to the exporter. |
 | `glowing_bear::export_url` |  | URL of external exporter. Required only when external export activated (`glowing_bear::export_name` set to `packer`) |
+| `glowing_bear::enable_fractalis_analysis` | `true` | Whether enable [fractalis] widget in transmart. |
+| `glowing_bear::fractalis_url` |  | URL of where [fractalis] could be found. |
+| `glowing_bear::fractalis_datasource_url` | `${glowing_bear::transmart_url}` | URL of transmart backend where fractalis gets data from. |
 
 Note that the modules only serves the application over plain HTTP, by configuring a simple Apache virtual host.
 For enabling HTTPS, a separate Apache instance needs to be setup as a proxy.
@@ -233,3 +236,4 @@ You should have received a copy of the [GNU General Public License](LICENSE) alo
 [Angular]: https://angular.io/
 [rake]: https://github.com/ruby/rake
 [rvm]: https://rvm.io/
+[fractalis]: https://fractalis.lcsb.uni.lu/
