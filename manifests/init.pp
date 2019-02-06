@@ -28,13 +28,17 @@
 # * `transmart_url`
 # The URL of the TranSMART server Glowing Bear should connect to.
 #
+# * `gb_backend_url`
+# The URL of the Glowing Bear backend.
+#
 # Examples
 # --------
 #
 # @example
 #    class { '::glowing_bear::params':
-#        hostname      => 'glowingbear.example.com',
-#        transmart_url => 'https://transmart.example.com',
+#        hostname       => 'glowingbear.example.com',
+#        transmart_url  => 'https://transmart.example.com',
+#        gb_backend_url => 'https://gb_backend.example.com',
 #    }
 #
 #    include ::glowing_bear

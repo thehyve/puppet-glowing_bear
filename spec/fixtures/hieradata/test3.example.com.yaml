@@ -2,3 +2,4 @@
 glowing_bear::hostname: test3.example.com
 glowing_bear::transmart_url: https://transmart.example.com
 glowing_bear::authentication_service_type: oidc
+glowing_bear::gb_backend_url: https://gb-backend.example.com
