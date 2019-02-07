@@ -195,6 +195,7 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::port`          | 80 | The port Apache should listen to. |
 | `glowing_bear::app_url`       | | The address where the Glowing Bear application will be available. |
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
+| `glowing_bear::gb_backend_url` | | The address of the Glowing Bear back end application. |
 | `glowing_bear::env`           | `dev` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |
 | `glowing_bear::show_observation_counts` | `true` | Show both subject counts and observation counts. |
 | `glowing_bear::include_data_table` | `true` | Show a data table below data selection. |

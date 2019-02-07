@@ -22,6 +22,7 @@ class glowing_bear::config inherits glowing_bear::params {
     # Set properties to be overridden
     $custom_properties = {
         'api-url'                     => $::glowing_bear::params::transmart_url,
+        'gb-backend-url'              => $::glowing_bear::params::gb_backend_url,
         'app-url'                     => $::glowing_bear::params::application_url,
         'show-observation-counts'     => $::glowing_bear::params::show_observation_counts,
         'include-data-table'          => $::glowing_bear::params::include_data_table,
