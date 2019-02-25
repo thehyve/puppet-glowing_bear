@@ -2,7 +2,7 @@
 class glowing_bear::params(
     String[1] $hostname                         = lookup('glowing_bear::hostname', String),
     String[1] $transmart_url                    = lookup('glowing_bear::transmart_url', String),
-    String[1] $gb_backend_url                   = lookup('glowing_bear::gb_backend_url', String),
+    Optional[String[1]] $gb_backend_url                   = lookup('glowing_bear::gb_backend_url', Optional[String[1]]),
 
     String[1] $user                             = lookup('glowing_bear::user', String, first, 'glowingbear'),
     Optional[String[2]] $user_home              = lookup('glowing_bear::user_home', Optional[String[2]], first, undef),
