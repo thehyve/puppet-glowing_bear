@@ -151,14 +151,14 @@ Install rake using the system-wide `ruby`:
 ```bash
 yum install ruby-devel
 gem install bundler
-export PUPPET_VERSION=4.8.2
+export PUPPET_VERSION=4.10.12
 bundle
 ```
 or using `rvm`:
 ```bash
 rvm install 2.4
 gem install bundler
-export PUPPET_VERSION=4.8.2
+export PUPPET_VERSION=4.10.12
 bundle
 ```
 Run the test suite:
@@ -220,7 +220,7 @@ with an SSL proxy installed on the host machine.
 
 ## License
 
-Copyright &copy; 2017&ndash;2018 &nbsp; The Hyve.
+Copyright &copy; 2017&ndash;2019 &nbsp; The Hyve.
 
 The puppet module for Glowing Bear is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
