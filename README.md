@@ -199,7 +199,7 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::env`           | `dev` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |
 | `glowing_bear::show_observation_counts` | `true` | Show both subject counts and observation counts. |
 | `glowing_bear::include_data_table` | `true` | Show a data table below data selection. |
-| `glowing_bear::include_query_subscription` | `false` | Enable query subscription. |
+| `glowing_bear::include_cohort_subscription` | `false` | Enable cohort subscription. |
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated. |
 | `glowing_bear::autosave_subject_sets` | Glowing Bear default | Flag if subject selection should be automatically persisted. |
 | `glowing_bear::authentication_service_type` | `transmart` | Authentication service type [`transmart`, `oidc`] |
