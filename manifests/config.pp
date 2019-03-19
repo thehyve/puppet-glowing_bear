@@ -26,7 +26,7 @@ class glowing_bear::config inherits glowing_bear::params {
         'app-url'                     => $::glowing_bear::params::application_url,
         'show-observation-counts'     => $::glowing_bear::params::show_observation_counts,
         'include-data-table'          => $::glowing_bear::params::include_data_table,
-        'include-query-subscription'  => $::glowing_bear::params::include_query_subscription,
+        'include-cohort-subscription'  => $::glowing_bear::params::include_cohort_subscription,
         'authentication-service-type' => $::glowing_bear::params::authentication_service_type,
         'enable-fractalis-analysis'   => $::glowing_bear::params::enable_fractalis_analysis,
         'fractalis-url'               => $::glowing_bear::params::fractalis_url,

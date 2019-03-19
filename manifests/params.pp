@@ -20,7 +20,7 @@ class glowing_bear::params(
 
     Boolean $show_observation_counts            = lookup('glowing_bear::show_observation_counts', Boolean, first, true),
     Boolean $include_data_table                 = lookup('glowing_bear::include_data_table', Boolean, first, true),
-    Boolean $include_query_subscription         = lookup('glowing_bear::include_query_subscription', Boolean, first, false),
+    Boolean $include_cohort_subscription         = lookup('glowing_bear::include_cohort_subscription', Boolean, first, false),
 
     Enum['transmart', 'oidc'] $authentication_service_type = lookup('glowing_bear::authentication_service_type', Enum['transmart', 'oidc'], first, 'transmart'),
     Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
