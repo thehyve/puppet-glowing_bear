@@ -197,7 +197,7 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
 | `glowing_bear::gb_backend_url` | | The address of the Glowing Bear back end application. |
 | `glowing_bear::env`           | `dev` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |
-| `glowing_bear::show_observation_counts` | `true` | Show both subject counts and observation counts. |
+| `glowing_bear::show_observation_counts` | `false` | Show both subject counts and observation counts. |
 | `glowing_bear::include_data_table` | `true` | Show a data table below data selection. |
 | `glowing_bear::include_cohort_subscription` | `false` | Enable cohort subscription. |
 | `glowing_bear::tree_node_counts_update` | Glowing Bear default | Flag is tree node counts should be automatically updated. |
