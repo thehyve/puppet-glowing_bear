@@ -18,7 +18,7 @@ class glowing_bear::params(
     Optional[Boolean] $tree_node_counts_update                  = lookup('glowing_bear::tree_node_counts_update', Optional[Boolean], first, undef),
     Optional[Boolean] $autosave_subject_sets                    = lookup('glowing_bear::autosave_subject_sets', Optional[Boolean], first, undef),
 
-    Boolean $show_observation_counts            = lookup('glowing_bear::show_observation_counts', Boolean, first, true),
+    Boolean $show_observation_counts            = lookup('glowing_bear::show_observation_counts', Boolean, first, false),
     Boolean $include_data_table                 = lookup('glowing_bear::include_data_table', Boolean, first, true),
     Boolean $include_cohort_subscription         = lookup('glowing_bear::include_cohort_subscription', Boolean, first, false),
 
