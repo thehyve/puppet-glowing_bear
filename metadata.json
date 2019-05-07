@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/thehyve/puppet-glowing_bear/issues",
   "dependencies": [
     {"name":"puppetlabs-stdlib","version_requirement":"4.x"},
-    {"name":"puppet-archive","version_requirement":">= 0.5.1 < 1.4.0"},
+    {"name":"puppet-archive","version_requirement":">= 0.5.1 < 3.3.0"},
     {"name":"puppetlabs-apache","version_requirement":">= 1.10.0 < 2.4.0"}
   ],
   "data_provider": null,
