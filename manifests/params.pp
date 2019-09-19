@@ -30,6 +30,9 @@ class glowing_bear::params(
     Boolean $enable_fractalis_analysis          = lookup('glowing_bear::enable_fractalis_analysis', Boolean, first, false),
     Optional[String[1]] $fractalis_url          = lookup('glowing_bear::fractalis_url', Optional[String], first, undef),
     Optional[String[1]] $fractalis_datasource_url               = lookup('glowing_bear::fractalis_datasource_url', Optional[String], first, $transmart_url),
+
+    Boolean $check_server_status                = lookup('glowing_bear::check_server_status', Boolean, first, false),
+    Boolean $deny_access_without_role           = lookup('glowing_bear::deny_access_without_role', Boolean, first, false),
 ) {
 
     if $authentication_service_type == 'oidc' {

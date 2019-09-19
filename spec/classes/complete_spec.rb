@@ -42,5 +42,12 @@ describe 'glowing_bear::complete' do
       it { is_expected.to create_class('glowing_bear::config') }
       it { is_expected.to create_class('glowing_bear::params') }
     end
+    context "with server check and denial of users without role on #{os}" do
+      let(:facts) { facts }
+      let(:node) { 'test5.example.com' }
+      it { is_expected.to create_class('glowing_bear::assets') }
+      it { is_expected.to create_class('glowing_bear::config') }
+      it { is_expected.to create_class('glowing_bear::vhost') }
+    end
   end
 end
