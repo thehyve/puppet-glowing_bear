@@ -6,6 +6,9 @@ addons:
     packages:
       - puppet
 
+env:
+  - PUPPET_VERSION=5.5.0
+
 install:
   - sudo apt-get install -y ruby-dev
   - gem install bundler
