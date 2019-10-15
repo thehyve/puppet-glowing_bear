@@ -11,7 +11,6 @@ class glowing_bear::params(
     Enum['snapshots', 'releases'] $repository   = lookup('glowing_bear::repository', Enum['snapshots','releases'], first, 'snapshots'),
 
     Integer[1,65535] $port                      = lookup('glowing_bear::port', Integer[1,65535], first, 80),
-    Optional[String[1]] $app_url                = lookup('glowing_bear::app_url', Optional[String], first, undef),
 
     Enum['default', 'dev', 'transmart'] $env    = lookup('glowing_bear::env', Enum['default', 'dev', 'transmart'], first, 'dev'),
 
@@ -32,13 +31,6 @@ class glowing_bear::params(
     Optional[String[1]] $fractalis_url          = lookup('glowing_bear::fractalis_url', Optional[String], first, undef),
     Optional[String[1]] $fractalis_datasource_url               = lookup('glowing_bear::fractalis_datasource_url', Optional[String], first, $transmart_url),
 ) {
-
-    if $app_url != undef {
-        $application_url = $app_url
-    } else {
-        notify { "Warning: Glowing Bear on ${hostname} is configured without SSL!": }
-        $application_url = "http://${hostname}"
-    }
 
     if $authentication_service_type == 'oidc' {
         # Check authentication settings

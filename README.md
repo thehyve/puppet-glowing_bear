@@ -87,7 +87,6 @@ Machine specific configuration should be in `/etc/puppetlabs/code/hieradata/${ho
 ```yaml
 ---
 glowing_bear::hostname: gb-vm.example.com
-glowing_bear::app_url: https://glowingbear.example.com
 glowing_bear::transmart_url: https://transmart.example.com
 ```
 
@@ -100,7 +99,6 @@ node 'test.example.com' {
     # Site specific configuration for Transmart
     class { '::glowing_bear::params':
         hostname      => 'gb-vm.example.com',
-        app_url       => 'https://glowingbear.example.com',
         transmart_url => 'https://transmart.example.com',
     }
 
@@ -193,7 +191,6 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::user_home`     | `/home/${user}` | The user home directory |
 | `glowing_bear::hostname`      | | The hostname of the virtual host that hosts the application (e.g., the name of the virtual machine where it is deployed). |
 | `glowing_bear::port`          | 80 | The port Apache should listen to. |
-| `glowing_bear::app_url`       | | The address where the Glowing Bear application will be available. |
 | `glowing_bear::transmart_url` | | The address of the TranSMART back end application. |
 | `glowing_bear::gb_backend_url` | | The address of the Glowing Bear back end application. |
 | `glowing_bear::env`           | `dev` | The Glowing Bear environment to use. [`default`, `dev`, `transmart`] |

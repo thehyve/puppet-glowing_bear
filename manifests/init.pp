@@ -22,9 +22,6 @@
 # * `hostname`
 # The hostname of the machine on which the application is hosted.
 #
-# * `app_url`
-# The URL at which the Glowing Bear application is reachable.
-#
 # * `transmart_url`
 # The URL of the TranSMART server Glowing Bear should connect to.
 #
