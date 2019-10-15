@@ -38,7 +38,7 @@ describe 'glowing_bear::complete' do
       end
     context "with complete fractalis configurations on #{os}" do
       let(:facts) { facts }
-      let(:node) { 'fractalis.example.com.yaml' }
+      let(:node) { 'fractalis.example.com' }
       it { is_expected.to create_class('glowing_bear::config') }
       it { is_expected.to create_class('glowing_bear::params') }
     end
