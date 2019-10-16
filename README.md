@@ -208,6 +208,8 @@ Alternatively, the parameters of the `::glowing_bear::params` class can be used 
 | `glowing_bear::enable_fractalis_analysis` | `true` | Whether enable [fractalis] widget in transmart. |
 | `glowing_bear::fractalis_url` |  | URL of where [fractalis] could be found. |
 | `glowing_bear::fractalis_datasource_url` | `${glowing_bear::transmart_url}` | URL of transmart backend where fractalis gets data from. |
+| `glowing_bear::check_server_status` | `false` | Enable checking server status before requesting data. |
+| `glowing_bear::deny_access_without_role` | `false` | Deny access to users without any roles assigned to them. The corresponding configuration needs to be set for the backends. |
 
 Note that the modules only serves the application over plain HTTP, by configuring a simple Apache virtual host.
 For enabling HTTPS, a separate Apache instance needs to be setup as a proxy.

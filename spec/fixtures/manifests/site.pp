@@ -14,6 +14,10 @@ node 'test4.example.com' {
     include ::glowing_bear
 }
 
+node 'test5.example.com' {
+    include ::glowing_bear
+}
+
 node 'ext.exp.example.com' {
     include ::glowing_bear
 }
