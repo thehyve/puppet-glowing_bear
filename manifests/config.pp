@@ -29,7 +29,7 @@ class glowing_bear::config inherits glowing_bear::params {
         'authentication-service-type' => $::glowing_bear::params::authentication_service_type,
         'enable-fractalis-analysis'   => $::glowing_bear::params::enable_fractalis_analysis,
         'fractalis-url'               => $::glowing_bear::params::fractalis_url,
-        'fractalis-datasource-url'    => $::glowing_bear::params::fractalis_datasource_url,
+        'fractalis-datasource-service' => $::glowing_bear::params::fractalis_datasource_service,
         'check-server-status'         => $::glowing_bear::params::check_server_status,
         'deny-access-to-users-without-role' => $::glowing_bear::params::deny_access_without_role,
         'export-mode'                 => {

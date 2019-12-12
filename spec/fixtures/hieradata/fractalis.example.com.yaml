@@ -3,5 +3,5 @@ glowing_bear::hostname: gb.example.com
 glowing_bear::transmart_url: https://transmart.url
 glowing_bear::enable_fractalis_analysis: true
 glowing_bear::fractalis_url: http://fractalis.url
-glowing_bear::fractalis_datasource_url: http://datasource.url
+glowing_bear::fractalis_datasource_service: datasource-service
 glowing_bear::gb_backend_url: https://gb-backend.example.com

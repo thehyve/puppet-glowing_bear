@@ -29,7 +29,7 @@ class glowing_bear::params(
     Optional[String[1]] $export_url             = lookup('glowing_bear::export_url', Optional[String], first, undef),
     Boolean $enable_fractalis_analysis          = lookup('glowing_bear::enable_fractalis_analysis', Boolean, first, false),
     Optional[String[1]] $fractalis_url          = lookup('glowing_bear::fractalis_url', Optional[String], first, undef),
-    Optional[String[1]] $fractalis_datasource_url               = lookup('glowing_bear::fractalis_datasource_url', Optional[String], first, $transmart_url),
+    Optional[String[1]] $fractalis_datasource_service               = lookup('glowing_bear::fractalis_datasource_service', Optional[String], first, undef),
 
     Boolean $check_server_status                = lookup('glowing_bear::check_server_status', Boolean, first, false),
     Boolean $deny_access_without_role           = lookup('glowing_bear::deny_access_without_role', Boolean, first, false),
@@ -64,6 +64,9 @@ class glowing_bear::params(
     if $enable_fractalis_analysis {
         if $fractalis_url  == undef {
             fail('fractalis analysis is enabled, but no url specified. Please configure glowing_bear::fractalis_url')
+        }
+        if $fractalis_datasource_service == undef {
+            fail('fractalis analysis is enabled, but no datasource service specified. Please configure glowing_bear::fractalis_datasource_service')
         }
     }
 }
