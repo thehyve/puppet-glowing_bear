@@ -21,8 +21,7 @@ class glowing_bear::params(
     Boolean $include_data_table                 = lookup('glowing_bear::include_data_table', Boolean, first, true),
     Boolean $include_cohort_subscription         = lookup('glowing_bear::include_cohort_subscription', Boolean, first, false),
 
-    Enum['transmart', 'oidc'] $authentication_service_type = lookup('glowing_bear::authentication_service_type', Enum['transmart', 'oidc'], first, 'transmart'),
-    Optional[String] $oidc_server_url           = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
+    String[1] $oidc_server_url                  = lookup('glowing_bear::oidc_server_url', Optional[String], first, undef),
     String[1] $oidc_client_id                   = lookup('glowing_bear::oidc_client_id', String, first, 'glowingbear-js'),
     String[1] $export_name                      = lookup('glowing_bear::export_name', String, first, 'transmart'),
     String[1] $export_data_view                 = lookup('glowing_bear::export_data_view', String, first, 'dataTable'),
@@ -34,13 +33,6 @@ class glowing_bear::params(
     Boolean $check_server_status                = lookup('glowing_bear::check_server_status', Boolean, first, false),
     Boolean $deny_access_without_role           = lookup('glowing_bear::deny_access_without_role', Boolean, first, false),
 ) {
-
-    if $authentication_service_type == 'oidc' {
-        # Check authentication settings
-        if $oidc_server_url == undef {
-            fail('No OpenID Connect server configured. Please configure glowing_bear::oidc_server_url')
-        }
-    }
 
     # Set glowingbear user home directory
     if $user_home == undef {

@@ -26,7 +26,8 @@ class glowing_bear::config inherits glowing_bear::params {
         'show-observation-counts'     => $::glowing_bear::params::show_observation_counts,
         'include-data-table'          => $::glowing_bear::params::include_data_table,
         'include-cohort-subscription'  => $::glowing_bear::params::include_cohort_subscription,
-        'authentication-service-type' => $::glowing_bear::params::authentication_service_type,
+        'oidc-server-url' => $::glowing_bear::params::oidc_server_url,
+        'oidc-client-id'  => $::glowing_bear::params::oidc_client_id,
         'enable-fractalis-analysis'   => $::glowing_bear::params::enable_fractalis_analysis,
         'fractalis-url'               => $::glowing_bear::params::fractalis_url,
         'fractalis-datasource-url'    => $::glowing_bear::params::fractalis_datasource_url,
@@ -41,13 +42,7 @@ class glowing_bear::config inherits glowing_bear::params {
                 'export-url' => $::glowing_bear::params::export_url
             }
         })
-    } + ($::glowing_bear::params::authentication_service_type ? {
-        'oidc' => {
-            'oidc-server-url' => $::glowing_bear::params::oidc_server_url,
-            'oidc-client-id'  => $::glowing_bear::params::oidc_client_id,
-        },
-        default => {}
-    }) + ($::glowing_bear::params::tree_node_counts_update ? {
+    } + ($::glowing_bear::params::tree_node_counts_update ? {
         undef     => {},
         default => {
             'tree-node-counts-update' => $::glowing_bear::params::tree_node_counts_update,
