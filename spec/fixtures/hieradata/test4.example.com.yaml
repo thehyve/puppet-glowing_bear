@@ -1,6 +1,5 @@
 ---
 glowing_bear::hostname: test4.example.com
 glowing_bear::transmart_url: https://transmart.example.com
-glowing_bear::authentication_method: oidc
 glowing_bear::oidc_server_url: https://idp.example.com
 glowing_bear::gb_backend_url: https://gb-backend.example.com

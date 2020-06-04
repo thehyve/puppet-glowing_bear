@@ -16,7 +16,7 @@ describe 'glowing_bear::complete' do
     context "with OpenID Connect (OIDC) configured without server url on #{os}" do
       let(:facts) { facts }
       let(:node) { 'test3.example.com' }
-      it { should compile.and_raise_error(/No OpenID Connect server configured/) }
+      it { should compile.and_raise_error(/parameter 'oidc_server_url' expects a String value, got Undef/) }
     end
     context "with OpenID Connect (OIDC) configured correctly on #{os}" do
       let(:facts) { facts }
